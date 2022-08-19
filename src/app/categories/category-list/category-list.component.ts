@@ -1,13 +1,13 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {combineLatest, Subscription} from "rxjs";
-import {AppService} from "../app.service";
-import {PeopleModel} from "../models";
+import {AppService} from "../../app.service";
+import {PeopleModel} from "../../models";
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class CategoryListComponent implements OnInit, OnDestroy {
 
@@ -46,7 +46,6 @@ export class CategoryListComponent implements OnInit, OnDestroy {
         ...params, ...queryParams}));
 
     urlParameters.subscribe((parameters: any) => {
-      console.log(parameters);
       this.categoryData = [];
       this.category = '';
       this.loading = true;

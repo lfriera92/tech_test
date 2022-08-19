@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AppService} from "../app.service";
+import {AppService} from "../../app.service";
 import {Subscription} from "rxjs";
-import {PeopleModel} from "../models";
+import {PeopleModel} from "../../models";
 
 @Component({
   selector: 'app-category-details',
