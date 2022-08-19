@@ -1,0 +1,24 @@
+<div class="d-flex flex-column justify-content-center" *ngIf="data">
+  <div class="card card-custom">
+    <div class="card-body">
+      <div class="d-flex flex-column py-1">
+        <div class="row my-2" *ngFor="let attr of attrsToBeShown">
+          <div class="col-sm-12 col-md-2 col-lg-2">
+            <div class="w-100">
+              <span class="fw-bold">{{ attr | titlecase }}</span>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-10 col-lg-10">
+            <div class="w-100">
+              <span>{{ attr === 'homeworld' ? planet : attr === 'height' ? getPersonHeight(data) : data[attr] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row justify-content-end">
+    <button class="btn btn-outline-primary" (click)="goList()">Atr&aacute;s</button>
+  </div>
+</div>

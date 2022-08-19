@@ -1,0 +1,48 @@
+<style>
+  :host {
+    width: 100%;
+    max-width: 100%;
+  }
+</style>
+
+<div class="topnav mb-3">
+  <a (click)="search(searchToken)" *ngFor="let searchToken of searchTokensArray">{{ searchToken | titlecase }}</a>
+  <div class="search-container">
+    <form>
+      <input type="text" placeholder="Search.." name="search"
+             [style]="!searchTokensArray.length ? {'margin-bottom': '8px'} : {}">
+      <button><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<ng-container *ngIf="category === 'people' || category === 'films' else noData">
+  <div class="d-flex flex-row justify-content-center" *ngIf="categoryData.length">
+    <div class="card card-custom">
+      <div class="card-body">
+        <div class="row py-2" *ngFor="let data of categoryData; let i = index">
+          <div class="col-10 col-lg-10">
+        <span class="text-dark fs-6 fw-bold text-wrap">
+          <ng-container *ngIf="category === 'people'">
+            {{ data.name + ' / ' + getPersonHeight(data) + ' / ' + data.homeworld }}
+          </ng-container>
+          <ng-container *ngIf="category === 'films'">
+            {{ data.title + ' / ' + data.director + ' / ' + data.release_date }}
+          </ng-container>
+        </span>
+          </div>
+          <div class="col-2 col-lg-2">
+            <button class="btn btn-outline-primary btn-sm" (click)="goDetalles(data, i)">
+              <span class="d-none d-md-block">Detalles</span>
+              <span class="d-sm-block d-md-none"><i class="fa fa-info"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noData>
+  <h6>No existen datos para mostrar</h6>
+</ng-template>
